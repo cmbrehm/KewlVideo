@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">KewlVideo</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_record">Record</string>
+    <string name="action_share">Upload</string>
+    <string name="tab_local">On Device</string>
+    <string name="tab_server">kewlvideo!</string>
+
+</resources>

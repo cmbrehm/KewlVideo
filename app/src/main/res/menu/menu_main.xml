@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_record" android:title="@string/action_record"
+        android:orderInCategory="100" app:showAsAction="always" android:icon="@android:drawable/ic_menu_camera"/>
+    <item android:id="@+id/action_upload" android:title="@string/action_share"
+        android:orderInCategory="95" app:showAsAction="always" android:icon="@android:drawable/ic_menu_upload_you_tube"/>
+</menu>
+
