@@ -2,10 +2,7 @@ package org.coursera.claybrehm.kewlvideo;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.CursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +21,10 @@ import org.coursera.claybrehm.kewlvideo.dummy.DummyContent;
  * Large screen devices (such as tablets) are supported by replacing the ListView
  * with a GridView.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnGalleryFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class GalleryFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class ExternalVideoFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,7 +35,7 @@ public class GalleryFragment extends Fragment implements AbsListView.OnItemClick
     private String mParam1;
     private String mParam2;
 
-    private OnGalleryFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener mListener;
 
     /**
      * The fragment's ListView/GridView.
@@ -49,11 +46,11 @@ public class GalleryFragment extends Fragment implements AbsListView.OnItemClick
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private CursorAdapter mAdapter;
+    private ListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
-    public static GalleryFragment newInstance(String param1, String param2) {
-        GalleryFragment fragment = new GalleryFragment();
+    public static ExternalVideoFragment newInstance(String param1, String param2) {
+        ExternalVideoFragment fragment = new ExternalVideoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +62,7 @@ public class GalleryFragment extends Fragment implements AbsListView.OnItemClick
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public GalleryFragment() {
+    public ExternalVideoFragment() {
     }
 
     @Override
@@ -77,26 +74,15 @@ public class GalleryFragment extends Fragment implements AbsListView.OnItemClick
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
         // TODO: Change Adapter to display your content
-        mAdapter = new SimpleCursorAdapter(getActivity(),
-                MediaStore.Video.query(),
-                )
         mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_gallery, container, false);
+        View view = inflater.inflate(R.layout.fragment_externalvideo, container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);
@@ -112,7 +98,7 @@ public class GalleryFragment extends Fragment implements AbsListView.OnItemClick
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnGalleryFragmentInteractionListener) activity;
+            mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -157,7 +143,7 @@ public class GalleryFragment extends Fragment implements AbsListView.OnItemClick
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-   public interface OnGalleryFragmentInteractionListener {
+    public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(String id);
     }
